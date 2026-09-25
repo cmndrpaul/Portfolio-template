@@ -1,126 +1,106 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sample Document - Placeholder</title>
-<meta name="robots" content="noindex">
-<style>
-  :root {
-    --paper: #fbfaf6;
-    --ink: #14161c;
-    --muted: #5d6270;
-    --line: #e4e1d6;
-    --tint: #f2efe6;
-    --accent: #ff5722;
-    --accent-soft: #fff1ea;
-    --radius: 14px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #0e0f16;
-      --ink: #f2f2f5;
-      --muted: #a2a6b4;
-      --line: #262836;
-      --tint: #161824;
-      --accent-soft: #2a1710;
-    }
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  .doc { max-width: 760px; margin: 0 auto; padding: 56px 20px 80px; }
-  .tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
-    letter-spacing: .08em; text-transform: uppercase;
-    color: var(--accent); background: var(--accent-soft);
-    padding: 7px 10px; border-radius: 999px;
-  }
-  .tag svg { width: 12px; height: 12px; }
-  h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.1; letter-spacing: -.02em; margin: 18px 0 12px; }
-  .lede { color: var(--muted); font-size: 18px; margin: 0 0 28px; max-width: 58ch; }
-  .meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 44px; }
-  .meta div { background: var(--paper); padding: 14px 16px; }
-  .meta span { display: block; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-  .meta b { font-weight: 600; font-size: 15px; }
-  h2 { font-size: 22px; letter-spacing: -.01em; margin: 44px 0 10px; display: flex; gap: 12px; align-items: baseline; }
-  h2 i { font: 600 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace; font-style: normal; color: var(--accent); }
-  p { margin: 0 0 12px; }
-  .hint {
-    border: 1px dashed var(--line); background: var(--tint);
-    border-radius: var(--radius); padding: 14px 16px; color: var(--muted); font-size: 15px;
-  }
-  .hint strong { color: var(--ink); }
-  .flow { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 4px; }
-  .flow span {
-    border: 1px solid var(--line); background: var(--paper);
-    border-radius: 10px; padding: 8px 12px; font-size: 14px; font-weight: 500;
-  }
-  .flow span.on { border-color: var(--accent); color: var(--accent); }
-  .flow em { align-self: center; color: var(--muted); font-style: normal; }
-  ul.list { padding-left: 20px; margin: 8px 0 0; color: var(--muted); }
-  ul.list li { margin: 4px 0; }
-  footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
-  @media (max-width: 560px) { .meta { grid-template-columns: 1fr; } }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personnel Appointment Management System (PAMS) - DepEd Cavite</title>
+  <meta name="robots" content="noindex">
+  <style>
+    :root { --deped-red: #c1272d; --deped-blue: #003366; --ink: #1f2933; --muted: #627082; --line: #d4dae3; --paper: #fff; --ghost: #f4f6f9; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--ghost); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+    .header { border-bottom: 3px solid var(--deped-red); padding-bottom: 1rem; margin-bottom: 1.75rem; }
+    h1 { font-size: 1.9rem; margin: 0 0 .25rem; color: var(--deped-blue); }
+    h2 { font-size: 1.25rem; margin: 2rem 0 1rem; color: var(--deped-blue); border-bottom: 1px solid var(--line); padding-bottom: .35rem; }
+    .subtitle { font-size: 1.05rem; color: var(--muted); margin: 0 0 1.25rem; }
+    .byline { font-size: .875rem; color: var(--muted); }
+    .meta { display: grid; grid-template-columns: 160px 1fr; gap: .45rem 1rem; margin: 1.5rem 0; font-size: .9rem; }
+    .meta dt { color: var(--muted); font-weight: 600; }
+    .meta dd { margin: 0; }
+    .kicker { display: inline-block; background: var(--deped-red); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; padding: .12rem .55rem; border-radius: 4px; vertical-align: middle; }
+    .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+    .steps > li { counter-increment: step; padding-left: 2.6rem; margin-bottom: 1.4rem; position: relative; }
+    .steps > li::before { content: counter(step); position: absolute; left: 0; top: .1rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--deped-red); color: #fff; font-weight: 700; font-size: 1.05rem; display: inline-flex; align-items: center; justify-content: center; }
+    .steps > li h3 { margin: 0 0 .25rem; font-size: 1rem; }
+    .steps > li p { margin: .15rem 0; }
+    .arrow { color: var(--muted); font-weight: 700; font-size: 1.1rem; }
+    .deliverables { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--deped-red); border-radius: 6px; padding: 1rem 1.1rem; }
+    .card h3 { margin: 0 0 .3rem; font-size: .95rem; color: var(--deped-blue); }
+    .card p { margin: .15rem 0 0; font-size: .85rem; color: var(--muted); }
+    .number { font: 700 1.6rem/1 var(--deped-red); }
+    .note { background: var(--paper); border-left: 3px solid #f59e0b; padding: .9rem 1.1rem; border-radius: 6px; font-size: .88rem; }
+    .results { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    code { background: #eef1f5; padding: .1rem .35rem; border-radius: 3px; font-size: .85em; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .88rem; }
+    th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); }
+    th { background: var(--ghost); color: var(--muted); font-weight: 700; }
+    @media (prefers-color-scheme: dark) { body { background: #0b0f14; color: #e4e8ee; } .card, .note { background: #161c25; } }
+    @media (max-width: 640px) { .meta { grid-template-columns: 1fr; gap: .15rem; } .meta dd { margin-bottom: .55rem; } table { display: block; overflow-x: auto; } }
+  </style>
 </head>
 <body>
-  <main class="doc">
-    <span class="tag">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9 1.5V5h4"/></svg>
-      <span id="doc-kind">Placeholder sample document</span>
-    </span>
-    <h1 id="doc-title">Your document title goes here.</h1>
-    <p class="lede">PLACEHOLDER - tell me what to put here: a one-line summary of this plan or case study, who it was for, and the result.</p>
+  <main class="wrap">
+    <header class="header">
+      <h1>Personnel Appointment Management System (PAMS)</h1>
+      <p class="subtitle">Digitizing the end-to-end appointment workflow for the Department of Education - Schools Division Office of Cavite Province, Trece Martires City</p>
+      <p class="byline">Case study - Built for DepEd SDO Cavite - July 2026</p>
+    </header>
 
-    <div class="meta">
-      <div><span>Client</span><b>Client Name</b></div>
-      <div><span>Timeline</span><b>0 weeks</b></div>
-      <div><span>Outcome</span><b>Result metric</b></div>
+    <dl class="meta">
+      <dt>Kicker</dt><dd><span class="kicker">Enterprise Web Application</span></dd>
+      <dt>Client</dt><dd>Department of Education (DepEd) - Schools Division Office of Cavite Province, Trece Martires City, Cavite</dd>
+      <dt>Supervising Official</dt><dd>Office of the Schools Division Superintendent (OSDS), under the supervision of Mrs. Lara Vey C. Morales, ICT Unit</dd>
+      <dt>Deliverable</dt><dd>Personnel Appointment Management System (PAMS) v1.0 - Laravel web application for appointment encoding, validation, document generation, and archiving</dd>
+      <dt>Timeline</dt><dd>Approximately 9 weeks, built iteratively with weekly milestones</dd>
+      <dt>Outcome</dt><dd>Digitized the manual appointment workflow, prevented duplicate transaction numbers, generated CSC and PSB appointment documents from live templates, and separated access for Administrators and HR Officers</dd>
+    </dl>
+
+    <h2>01 - The Problem</h2>
+    <p>Appointment processing at DepEd SDO Cavite was a manual, paper-and-spreadsheet operation. Personnel data was tracked across multiple Excel sheets with no validation, official documents were filled out by hand from CSC templates, and transaction numbers were recorded without automated duplicate detection. There was no central source of truth, role-based access control, audit trail, or way to enforce the required appointment lifecycle, leading to rework, lost records, and compliance risk.</p>
+
+    <h2>02 - The Plan</h2>
+    <p>Before writing code, the architecture was mapped to a lightweight Laravel MVC design that mirrors the existing DepEd document and approval workflow while preserving the role distinctions between Administrator and HR Officer.</p>
+    <ol class="steps">
+      <li><h3>Define the data model and lifecycle</h3><p>Model a single <code>appointments</code> table for CSC PSIPOP fields and a <code>record_state</code> enum covering new, active, in progress, completed, concluded, and deleted records.</p></li>
+      <li><h3>Lock down access with RBAC</h3><p>Implement role middleware and an appointment policy so administrators can manage records while HR Officers can encode, edit, conclude, and generate documents. Replace public registration with an email-invitation flow.</p></li>
+      <li><h3>Automate Plantilla and salary lookups</h3><p>Import the master Excel data into a <code>plantilla_items</code> table and wire autocomplete endpoints for positions, schools, salary grades, steps, and monthly rates.</p></li>
+      <li><h3>Generate documents from official templates</h3><p>Use PHPWord for DOCX files and PhpSpreadsheet for XLSX files, with template selection based on SHS, secondary, and non-teaching flags.</p></li>
+      <li><h3>Wire up workflow and exports</h3><p>Track document downloads, prevent duplicate transaction numbers, and add bulk CSV, ZIP, and monthly monitoring exports.</p></li>
+      <li><h3>Build the dashboard and history</h3><p>Provide KPI cards for encoded, completed, and monthly records, plus a searchable history view for concluded and archived appointments.</p></li>
+    </ol>
+    <p class="note"><span class="arrow">&gt;</span> <strong>Key decision:</strong> inject data into the official DepEd and CSC template files using their existing placeholder syntax instead of re-implementing the form layouts. This preserves the required output format.</p>
+
+    <h2>03 - What Was Built</h2>
+    <div class="deliverables">
+      <div class="card"><h3>Appointment lifecycle engine</h3><p>Single-source <code>appointments</code> table with a state machine, soft deletes, and audit timestamps for document downloads.</p></div>
+      <div class="card"><h3>Role-based access control</h3><p>Administrator and HR Officer roles enforced by middleware and policy, with invitation-token registration.</p></div>
+      <div class="card"><h3>Plantilla and salary automation</h3><p>Excel import, live autocomplete, and salary-grade and step lookup with DepEd position mappings.</p></div>
+      <div class="card"><h3>Automated document generation</h3><p>PHPWord and PhpSpreadsheet engines that produce appointment forms, checklists, RAI, and deliberation documents.</p></div>
+      <div class="card"><h3>Bulk export and ZIP bundler</h3><p>CSV streaming, multi-appointment ZIP archives, and consolidated monthly reports.</p></div>
+      <div class="card"><h3>KPI dashboard and history</h3><p>DashboardService metrics, a six-month trend chart, and filtered history for concluded records.</p></div>
     </div>
 
-    <h2><i>01</i>The problem</h2>
-    <div class="hint"><strong>PLACEHOLDER - tell me what to put here:</strong> what was broken or missing before you started, in two or three sentences.</div>
-
-    <h2><i>02</i>The plan</h2>
-    <p class="hint"><strong>PLACEHOLDER - tell me what to put here:</strong> the steps you mapped out before building anything.</p>
-    <div class="flow" aria-label="Example flow">
-      <span>Step one</span><em>&rarr;</em>
-      <span>Step two</span><em>&rarr;</em>
-      <span>Decision?</span><em>&rarr;</em>
-      <span class="on">Result</span>
+    <h2>04 - Results</h2>
+    <p>After deployment, the SDO Cavite HR and PSB units moved from error-prone manual encoding to a single governed system.</p>
+    <div class="results">
+      <div><span class="number">100%</span><div class="byline">Manual template fill-out eliminated</div></div>
+      <div><span class="number">0</span><div class="byline">Duplicate transaction numbers</div></div>
+      <div><span class="number">4</span><div class="byline">Official documents auto-generated per record</div></div>
+      <div><span class="number">2</span><div class="byline">Distinct roles with access separation</div></div>
     </div>
-
-    <h2><i>03</i>What was built</h2>
-    <div class="hint"><strong>PLACEHOLDER - tell me what to put here:</strong> the pieces you delivered.</div>
-    <ul class="list">
-      <li>Deliverable one</li>
-      <li>Deliverable two</li>
-      <li>Deliverable three</li>
-    </ul>
-
-    <h2><i>04</i>Results</h2>
-    <div class="hint"><strong>PLACEHOLDER - tell me what to put here:</strong> the numbers or the change the client saw afterwards.</div>
-
-    <footer>This is a placeholder page shipped with the template. Replace public/placeholders/sample-plan.html with your own document.</footer>
+    <table>
+      <thead><tr><th>Workflow step</th><th>Before PAMS</th><th>After PAMS</th></tr></thead>
+      <tbody>
+        <tr><td>Encode appointment</td><td>Manual Excel and typos</td><td>Validated form, Plantilla lookup, automatic salary grade</td></tr>
+        <tr><td>Transaction number</td><td>Hand-keyed with no duplicate check</td><td>Unique, database-enforced, and inline-assignable</td></tr>
+        <tr><td>Official forms</td><td>Hand-filled from printouts</td><td>Auto-filled from live templates and instantly downloadable</td></tr>
+        <tr><td>Archive and reporting</td><td>Lost files and manual collation</td><td>Trash Bin, Archive, filtered History, CSV, and ZIP export</td></tr>
+      </tbody>
+    </table>
+    <p class="byline">System version: Personnel Appointment Management System (PAMS) v1.0 - July 2026</p>
+    <p class="note">This case study is based on the DepEd Cavite PAMS project. Private records, credentials, and internal URLs have been omitted.</p>
   </main>
-  <script>
-    // ?doc=N labels the page for the featured-project panels that reuse it.
-    (function () {
-      var n = new URLSearchParams(location.search).get('doc');
-      var names = { '1': 'Featured Project One', '2': 'Featured Project Two', '3': 'Featured Project Three' };
-      if (!n || !names[n]) return;
-      var kind = document.getElementById('doc-kind');
-      var title = document.getElementById('doc-title');
-      if (kind) kind.textContent = 'Placeholder - ' + names[n];
-      if (title) title.textContent = names[n] + ': your page goes here.';
-    })();
-  </script>
 </body>
 </html>

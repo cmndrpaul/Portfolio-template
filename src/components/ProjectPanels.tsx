@@ -82,7 +82,7 @@ export function PlanPanel() {
         host="yourdomain.com"
         path="/sample-plan"
       />
-      <LiveFrame src="/placeholders/sample-plan.html" title="Sample document" />
+      <LiveFrame src="/placeholders/sample-plan.html" title="PAMS case study" />
     </div>
   )
 }

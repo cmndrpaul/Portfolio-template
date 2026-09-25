@@ -43,30 +43,30 @@ export type Profile = {
 }
 
 export const profile: Profile = {
-  name: 'Your Name',
-  firstName: 'Your Name',
-  handle: '@yourhandle',
-  role: 'PLACEHOLDER - your title',
-  avatarSrc: '/avatar.svg',
-  verifiedLabel: 'PLACEHOLDER - what the tick means (e.g. a certification)',
-  email: 'you@example.com',
-  location: 'PLACEHOLDER - your city or timezone',
+  name: 'John Paul M. Gonzaga',
+  firstName: 'John Paul',
+  handle: '@cmndrpaul',
+  role: 'Frontend Developer',
+  avatarSrc: '/profile.jpg.png',
+  verifiedLabel: 'Identity verified',
+  email: 'cmndr.johnpaulgonzaga@gmail.com',
+  location: 'Cavite, Philippines',
   stats: [
-    { value: '0 yrs', label: 'PLACEHOLDER' },
-    { value: '#000', label: 'PLACEHOLDER' },
-    { value: 'GMT+0', label: 'PLACEHOLDER' },
+    { value: '3 yrs', label: 'Experience' },
+    { value: '12', label: 'Projects' },
+    { value: 'Freelance', label: 'Based' },
   ],
   // The intro types this line, then flies it into the Home headline.
   // Keep it short: two halves, 5-8 words total.
-  displayName: { line1: 'Your headline here.', line2: 'Keep it short.' },
+  displayName: { line1: 'Interfaces with intent.', line2: 'Built to be used.' },
   hero: {
-    body: 'PLACEHOLDER - one line on what you do and who you do it for.',
-    portraitSrc: '/avatar.svg',
-    portraitAlt: 'Portrait placeholder',
+    body: 'I build thoughtful, responsive frontend experiences for people and teams who care about the details.',
+    portraitSrc: '/profile.jpg.png',
+    portraitAlt: 'Portrait of John Paul M. Gonzaga',
   },
   socials: [
-    { label: 'Facebook profile', href: '#', iconPath: '/icons/facebook.svg' },
-    { label: 'LinkedIn profile', href: '#', iconPath: '/icons/linkedin.svg' },
-    { label: 'Discord profile', href: '#', iconPath: '/icons/discord.svg' },
+    { label: 'Facebook profile', href: 'https://www.facebook.com/cmndr.jp/', iconPath: '/icons/facebook.svg' },
+    { label: 'GitHub profile', href: 'https://github.com/cmndrpaul', iconPath: '/icons/github.svg' },
+    { label: 'LinkedIn profile', href: 'https://www.linkedin.com/in/john-paul-gonzaga-562587284/', iconPath: '/icons/linkedin.svg' },
   ],
 }

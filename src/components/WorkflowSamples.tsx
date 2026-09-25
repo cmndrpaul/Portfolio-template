@@ -22,13 +22,17 @@ import { X } from '@/components/slab'
 type Sample = { file: string; label: string }
 
 const SAMPLES: Sample[] = [
-  { file: 'project-1.jpg', label: 'Project Screenshot 1' },
-  { file: 'project-2.jpg', label: 'Project Screenshot 2' },
-  { file: 'project-3.jpg', label: 'Project Screenshot 3' },
-  { file: 'project-4.jpg', label: 'Project Screenshot 4' },
+  { file: '/projects/loginpage-deped.png', label: 'DepEd login page' },
+  { file: '/projects/dashboard-deped.png', label: 'DepEd dashboard' },
+  { file: '/projects/appointmentdata-deped.png', label: 'Appointment data' },
+  { file: '/projects/newappointment-deped.png', label: 'New appointment' },
+  { file: '/projects/history-deped.png', label: 'Appointment history' },
+  { file: '/projects/archive-deped.png', label: 'Appointment archive' },
+  { file: '/projects/admindashboard-deped.png', label: 'Admin dashboard' },
 ]
 
-const srcOf = (s: Sample) => `/placeholders/${encodeURIComponent(s.file)}`
+const srcOf = (s: Sample) =>
+  s.file.startsWith('/') ? s.file : `/placeholders/${encodeURIComponent(s.file)}`
 
 export default function WorkflowSamples() {
   const doubled = useMemo(() => [...SAMPLES, ...SAMPLES], [])

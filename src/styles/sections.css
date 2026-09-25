@@ -455,6 +455,20 @@
   /* Multi-color brand PNGs render as-is with their native colors preserved. */
 }
 
+.tools-marquee__fallback {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 1px solid rgba(11, 30, 63, 0.25);
+  border-radius: 5px;
+  color: var(--navy);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
 .tools-marquee__label {
   color: var(--navy);
 }

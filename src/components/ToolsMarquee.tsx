@@ -32,23 +32,33 @@ import { useMemo } from 'react'
 
 type Tool = {
   name: string
-  iconPath: string
+  iconPath?: string
+  glyph: string
   /** When set, the SVG silhouette is tinted via CSS mask. Omit for multi-color marks. */
   color?: string
 }
 
 export const tools: Tool[] = [
-  { name: 'Claude Code',          iconPath: '/icons/claude-code-logo.png' },
-  { name: 'Codex',                iconPath: '/icons/codex.svg',           color: '#000000' },
-  { name: 'Cursor',               iconPath: '/icons/cursor.svg',          color: '#0F172A' },
-  { name: 'Hermes AI',            iconPath: '/icons/nousresearch.svg',    color: '#18181B' },
-  { name: 'VS Code',              iconPath: '/icons/vscode.svg' },
-  { name: 'GoHighLevel',          iconPath: '/icons/gohighlevel.png' },
-  { name: 'Lightspeed X-Series',  iconPath: '/icons/lightspeed.png' },
-  { name: 'Google Workspace',     iconPath: '/icons/googleworkspace.svg' },
-  { name: 'Zendesk',              iconPath: '/icons/zendesk.svg',         color: '#03363D' },
-  { name: 'Intercom',             iconPath: '/icons/intercom.svg',        color: '#1F8DED' },
-  { name: 'Slack',                iconPath: '/icons/slack.svg',           color: '#611F69' },
+  { name: 'React', iconPath: '/icons/ai/react.svg', glyph: 'R', color: '#149ECA' },
+  { name: 'JavaScript', iconPath: 'https://cdn.simpleicons.org/javascript', glyph: 'JS' },
+  { name: 'Tailwind CSS', iconPath: '/icons/ai/tailwindcss.svg', glyph: 'TW', color: '#06B6D4' },
+  { name: 'Bootstrap', iconPath: 'https://cdn.simpleicons.org/bootstrap', glyph: 'B' },
+  { name: 'Laravel', iconPath: 'https://cdn.simpleicons.org/laravel', glyph: 'L' },
+  { name: 'HTML5/CSS3', iconPath: 'https://cdn.simpleicons.org/html5', glyph: 'H5' },
+  { name: 'PHP', iconPath: 'https://cdn.simpleicons.org/php', glyph: 'PHP' },
+  { name: 'Java', iconPath: 'https://cdn.simpleicons.org/openjdk', glyph: 'J' },
+  { name: 'MySQL', iconPath: 'https://cdn.simpleicons.org/mysql', glyph: 'SQL' },
+  { name: 'Supabase', iconPath: 'https://cdn.simpleicons.org/supabase', glyph: 'S' },
+  { name: 'Firebase', iconPath: 'https://cdn.simpleicons.org/firebase', glyph: 'F' },
+  { name: 'Vercel', iconPath: 'https://cdn.simpleicons.org/vercel', glyph: 'V' },
+  { name: 'GitHub', iconPath: '/icons/github.svg', glyph: 'GH', color: '#18181B' },
+  { name: 'Figma', iconPath: 'https://cdn.simpleicons.org/figma', glyph: 'F' },
+  { name: 'Kilocode AI', iconPath: 'https://cdn.simpleicons.org/kilocode', glyph: 'AI' },
+  { name: 'Dart', iconPath: 'https://cdn.simpleicons.org/dart', glyph: 'D' },
+  { name: 'Flutter', iconPath: 'https://cdn.simpleicons.org/flutter', glyph: 'FL' },
+  { name: 'Android Studio', iconPath: 'https://cdn.simpleicons.org/androidstudio', glyph: 'AS' },
+  { name: 'VS Code', iconPath: '/icons/vscode.svg', glyph: 'VS' },
+  { name: 'Google Workspace', iconPath: '/icons/googleworkspace.svg', glyph: 'GW' },
 ]
 
 export default function ToolsMarquee() {
@@ -60,7 +70,7 @@ export default function ToolsMarquee() {
     <section className="tools-marquee" aria-label="Tools I work with" data-reveal>
       <div className="tools-marquee__track" aria-hidden="true">
         {doubled.map((tool, i) => {
-          const useMask = tool.iconPath.endsWith('.svg') && !!tool.color
+          const useMask = !!tool.iconPath && tool.iconPath.endsWith('.svg') && !!tool.color
           return (
             <div key={`${tool.name}-${i}`} className="tools-marquee__item">
               {useMask ? (
@@ -72,16 +82,20 @@ export default function ToolsMarquee() {
                   }}
                 />
               ) : (
-                <img
-                  className="tools-marquee__img"
-                  src={tool.iconPath}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  decoding="async"
-                  width={20}
-                  height={20}
-                />
+                tool.iconPath ? (
+                  <img
+                    className="tools-marquee__img"
+                    src={tool.iconPath}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                    width={20}
+                    height={20}
+                  />
+                ) : (
+                  <span className="tools-marquee__fallback" aria-hidden="true">{tool.glyph}</span>
+                )
               )}
               <span className="tools-marquee__label">{tool.name}</span>
             </div>
